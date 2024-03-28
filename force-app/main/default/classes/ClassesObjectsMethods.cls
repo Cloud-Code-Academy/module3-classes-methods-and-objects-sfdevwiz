@@ -128,16 +128,20 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
+        Integer count = 0;
 
-        /*
-        for () {
+        //Loop through each character in the string
+        for (Integer i = 0; i < str.length(); i++) {
             // get individual characters from the string - hint use substring or split
+           String character = str.substring(i, i + 1);
             // check if the character is a vowel
-            // if it is a vowel, increment the result Integer
+            if ('aeiou'.contains(character)) {
+                // if it is a vowel, increment the result Integer
+                count++;
+            }
         }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        
+        return count; // Replace null with the variable you used to store the result
     }
 
     /**
