@@ -292,7 +292,7 @@ public with sharing class ClassesObjectsMethods {
             this.title = title;
             this.author = author;
         }
-    
+
         // Method that returns the details of the book
         public String getBookDetails() {
             // return A string containing the details of the book in the format "Title: <title>, Author: <author>"
@@ -410,14 +410,18 @@ public with sharing class ClassesObjectsMethods {
         List<String> results = new List<String>();
         // Create a new instance of Person class
         // Name the person 'John Doe' and set the age to 28
+        Person person = new Person('John Doe', 28);
 
         // Add the details of the person using the introduceYourself method
+        results.add(person.introduceYourself());
 
         // Get the name of the person using the getter method and add it to the list
+        results.add(person.getName());
 
         // Get the age of the person using the getter method and add it to the list
-        
-        return null; // Replace null with the variable you used to store the result
+        results.add(String.valueOf(person.getAge()));
+
+        return results; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -429,9 +433,10 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Person createPerson(String name, Integer age) {
         // Create a new instance of the Person class using the provided name and age
-        
+        Person newPerson = new Person(name, age);
+
         // Return the new instance of the Person class
-        return null; // Replace null with the variable you used to store the result
+        return newPerson; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -444,15 +449,18 @@ public with sharing class ClassesObjectsMethods {
      * @return A list of new Person objects.
      */
     public static List<Person> createMultiplePersons(List<String> names, Integer age) {
-
+        List<Person> persons = new List<Person>();
         // Loop through each name in the provided list of names
+        for (String name : names) {
             // Create a new Person object for each name
-            
+            Person newPerson = new Person(name, age);
+
             // Add the new Person object to the list of Person objects
-        
+            persons.add(newPerson);
+        }
         
         // Return the list of Person objects
-        return null; // Replace null with the variable you used to store the result
+        return persons; // Replace null with the variable you used to store the result
     }
 
 
@@ -467,6 +475,16 @@ public with sharing class ClassesObjectsMethods {
      * @return The Person object of the older person.
      */
     public static Person getOlderPerson(Person person1, Person person2) {
-        return null; // Replace null with the variable you used to store the result
+     // Compare the ages of the two Person objects
+     if (person1.getAge() > person2.getAge()) {
+        // If the first Person is older, return the first Person
+        return person1;
+    } else if (person1.getAge() < person2.getAge()) {
+        // If the second Person is older, return the second Person
+        return person2;
+    } else {
+        // If they are the same age, return either
+        return person1; // Or return person2, since they are of the same age
+    }
     }
 }
